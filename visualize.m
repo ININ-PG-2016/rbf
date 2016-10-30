@@ -6,7 +6,6 @@ y = yMin:yStep:yMax;
 
 z = feval(f,xx,yy);
 figure;
-view(3)
 surface(x,y,z);
 out = 0;
 end
