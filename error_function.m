@@ -1,3 +1,3 @@
-function ret = error_function(x, y, ptsX, ptsY, phi, coef, func)
-  ret = abs(rbf_eval(x, y, ptsX, ptsY, phi, coef) .- feval(func, x, y));
+function ret = error_function(x, y, func1, func2)
+  ret = abs(feval(func1, x, y) .- feval(func2, x, y));
 endfunction
