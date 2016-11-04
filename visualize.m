@@ -6,7 +6,9 @@ y = yMin:yStep:yMax;
 
 z = feval(f,xx,yy);
 figure;
-surface(x,y,z);
+surface(x,y,z)
+view(3);
+%print('out', '-dpng')
 out = 0;
 end
 
