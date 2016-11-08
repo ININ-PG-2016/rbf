@@ -1,20 +1,22 @@
-function out = rbf_poly1(x,y, phi, func)
-A = zeros(length(x) + 3);
-b = zeros(length(x) + 3, 1);
+function out = rbf_poly1(points, values, phi)
+  n = length(points);
+  A = zeros(n + 3);
+  b = zeros(n + 3, 1);
   
-for i = 1:length(x)
-  b(i) = feval(func, x(i), y(i));
-  for j = 1:length(x)
-    A(i,j) = feval(phi, sqrt((x(i) - x(j)).^2 + (y(i)-y(j)).^2));
+  for i = 1:n
+    b(i) = values(i);
+    for j = 1:n
+      A(i,j) = feval(phi, sqrt((points(i, 1) - points(j, 1)).^2 + (points(i, 2) - points(j, 2)).^2));
+    end
   end
-end
-for i = 1:length(x)
-  A(i,length(x) + 1) = 1;
-  A(i,length(x) + 2) = x(i);
-  A(i,length(x) + 3) = y(i);
-  A(length(x) + 1, i) = 1;
-  A(length(x) + 2, i) = x(i);
-  A(length(x) + 3, i) = y(i);
-end
-out = A\b;
+  for i = 1:n
+    A(i,n + 1) = 1;
+    A(i,n + 2) = points(i, 1);
+    A(i,n + 3) = points(i, 2);
+    A(n + 1, i) = 1;
+    A(n + 2, i) = points(i, 1);
+    A(n + 3, i) = points(i, 2);
+  end
+  
+  out = A\b;
 end

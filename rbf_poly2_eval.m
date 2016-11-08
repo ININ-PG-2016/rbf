@@ -1,7 +1,8 @@
-function out = rbf_poly2_eval(xx, yy, x,y, phi, coef)
+function out = rbf_poly2_eval(x, y, points, phi, coef)
+  n = length(points);
   out = 0;
-  for i = 1:length(x)
-    out = out + coef(i) * feval(phi, sqrt((xx - x(i)).^2 + (yy-y(i)).^2));
+  for i = 1:n
+    out = out + coef(i) * feval(phi, sqrt((x - points(i, 1)).^2 + (y - points(i, 2)).^2));
   end
-  out = out .+ coef(length(x) + 1) .+ coef(length(x) + 2) .* xx .+ coef(length(x) + 3) .* yy .+ coef(length(x) + 4) .* xx.^2 .+ coef(length(x) + 5) .* yy.^2 .+ coef(length(x) + 6) .* xx .* yy;
+  out = out .+ coef(n + 1) .+ coef(n + 2) .* x .+ coef(n + 3) .* y .+ coef(n + 4) .* x.^2 .+ coef(n + 5) .* y.^2 .+ coef(n + 6) .* x .* y;
 end
