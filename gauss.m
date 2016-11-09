@@ -1,3 +1,3 @@
 function out = gauss(r)
-  out = exp(-(r).^2);
+  out = exp(-(15 .* r).^2);
 end

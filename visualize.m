@@ -6,8 +6,9 @@ y = yMin:yStep:yMax;
 
 z = feval(f,xx,yy);
 figure;
-surface(x,y,z)
+surf(x,y,z)
 view(3);
+colormap cool
 %print('out', '-dpng')
 out = 0;
 end

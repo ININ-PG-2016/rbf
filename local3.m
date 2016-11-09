@@ -1,7 +1,8 @@
 function ret = local3(r)
-  if r > 1
+  a = 10;
+  if ((a .* r) > 1)
     ret = 0;
   else
-    ret = ((1 .- r).^5).*((8 .* r.^2) .+ 5 .* r .+ 1);
+    ret = ((1 .- (a .* r)).^5).*((8 .* (a .* r).^2) .+ 5 .* (a .* r) .+ 1);
   end
-endfunction
+end
